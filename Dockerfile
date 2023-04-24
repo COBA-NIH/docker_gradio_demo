@@ -7,7 +7,7 @@
 FROM python:3.9-slim
 
 # Install the dependencies for the gradio app
-RUN python -m pip install gradio scipy scikit-image
+RUN python -m pip install gradio==3.25.0 scipy scikit-image
 
 # Add app.py from the directory where `docker build` was run and add it into the
 # workspace directory within the container
