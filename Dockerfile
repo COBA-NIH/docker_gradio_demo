@@ -1,6 +1,6 @@
 # ctromanscoia/docker-gradio-demo:0.1
 # docker build -t ctromanscoia/docker-gradio-demo:0.1 . 
-# docker run --user $(id -u):$(id -g) --rm=true -it -v $(pwd):/scratch -w /scratch ctromanscoia/docker-gradio-demo:0.1 /bin/bash
+# docker run -it --rm -p 127.0.0.1:8000:8000 ctromanscoia/docker-gradio-demo:0.1
 # docker push ctromanscoia/docker-gradio-demo:0.1
 
 # Define an image to start from. 
@@ -15,5 +15,3 @@ ADD app.py /workspace/
 
 # Run the app. Will be accessible at http://localhost:8000/
 CMD [ "python3" , "/workspace/app.py" ]
-
-# docker run -it --rm -p 127.0.0.1:8000:8000 ctromanscoia/docker-gradio-demo:0.1

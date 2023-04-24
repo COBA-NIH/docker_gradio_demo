@@ -1,6 +1,21 @@
-# Using Docker and Gradio to create a simple and reproducible web-based GUI
+# Using Docker and Gradio to create a simple and reproducible web-based GUI for image analysis
 
-![Gradio example](content/gradio_example.png)
+<p align="center">
+  <img src="content/gradio_example.png">
+</p>
+
+## Who is this for?
+
+The motivation behind this tool is to provide biologists who have no prior programming experience access to custom image analysis solutions. This repo contains example usage of Gradio combined with Docker with bioimage analysis in mind. Gradio provides an intuitive web-based interface that is contained within a docker image that possesses the required dependencies. As a result, a biologist in the lab can upload, adjust settings, and analyze their images entirely from the browser without having to interact with the underlying code or having to tackle tricky package installations. The only installation requirement is Docker, but even this can be avoided by having your local IT department host the Docker in the cloud.
+
+## Run the example docker
+
+1. Download Docker from: https://docs.docker.com/get-docker/
+2. Search for `ctromanscoia/docker-gradio-demo:latest` inside the Docker app and press `pull`
+   1. Alternatively, from the terminal you can run `docker pull ctromanscoia/docker-gradio-demo:0.1`
+3. Run the docker with `docker run -it --rm -p 127.0.0.1:8000:8000 ctromanscoia/docker-gradio-demo:0.1`
+4. Go to [127.0.0.1:8000:8000](127.0.0.1:8000:8000) and use the example app to process an image
+   1. The example here will threshold an image, label it, and then remove objects outside the size range
 
 ### What is Docker?
 
@@ -34,14 +49,11 @@ By combining gradio and docker, you can run a docker that contains your gradio a
    2. `version number` can simply be "latest". However, if you intend to update the weights of a model over time and include these within the docker container, you can specify a specific version to run that has the weights that work best
 
 
-## Run the example docker
+## Notes
 
-1. Download Docker from: https://docs.docker.com/get-docker/
-2. Search for `ctromanscoia/docker-gradio-demo:latest` inside docker and press `pull`
-   1. Alternatively, from the terminal you can run `docker pull ctromanscoia/docker-gradio-demo:0.1`
-3. Run the docker with `docker run -it --rm -p 127.0.0.1:8000:8000 ctromanscoia/docker-gradio-demo:0.1`
-4. Go to [127.0.0.1:8000:8000](127.0.0.1:8000:8000) and use the example app to process an image
-   1. The example here will threshold an image, label it, and then remove objects outside the size range
+In the example usage, we use `gradio.file` as image input and output, rather than `gradio.image`, since `gradio.file` **better supports typical bioimage formats** - 2D, 3D, grayscale. As a result the example function defined with `app.py` is responsible for loading the provided image from the input file path. 
+
+
 
 
 
