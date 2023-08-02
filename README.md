@@ -11,10 +11,14 @@ The motivation behind this tool is to provide biologists who have no prior progr
 ## Run the example docker
 
 1. Download Docker from: https://docs.docker.com/get-docker/
-2. Search for `ctromanscoia/docker-gradio-demo:latest` inside the Docker app and press `pull`
-   1. Alternatively, from the terminal you can run `docker pull ctromanscoia/docker-gradio-demo:0.1`
-3. Run the docker with `docker run -it --rm -p 127.0.0.1:8000:8000 ctromanscoia/docker-gradio-demo:0.1`
-4. Go to [127.0.0.1:8000:8000](127.0.0.1:8000:8000) and use the example app to process an image
+2. Search for `bethcimini/docker-gradio-demo:latest` inside the Docker app and press `pull`
+   1. Alternatively, from the terminal you can run `docker pull bethcimini/docker-gradio-demo:latest`
+3. Hit the "play" button next to the container, expand to change the optional settings, and type 8000 in the line for the port
+   1. Alternatively, from the terminal you can run the docker with `docker run -it --rm -p 127.0.0.1:8000:8000 bethcimini/docker-gradio-demo:latest`
+<p align="center">
+  <img src="content/port.png">
+</p>
+4. Go to [127.0.0.1:8000](127.0.0.1:8000) and use the example app to process an image
    1. The example here will threshold an image, label it, and then remove objects outside the size range
 
 ### What is Docker?
@@ -53,7 +57,9 @@ By combining gradio and docker, you can run a docker that contains your gradio a
 
 In the example usage, we use `gradio.file` as image input and output, rather than `gradio.image`, since `gradio.file` **better supports typical bioimage formats** - 2D, 3D, grayscale. As a result the example function defined with `app.py` is responsible for loading the provided image from the input file path. 
 
+## Who made this?
 
+The original version was made in 2023 by [Callum Tromans-Coia](https://github.com/callum-jpg) as part of the [Center for Open Bioimage Analysis](http://openbioimageanalysis.org/). 
 
 
 
